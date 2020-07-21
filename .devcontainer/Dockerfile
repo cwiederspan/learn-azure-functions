@@ -5,6 +5,12 @@
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 
+# Latest version of Terraform may be found at https://www.terraform.io/downloads.html
+ARG TERRAFORM_VERSION=0.12.28
+
+# Latest version of Terrform Linter may be found at https://github.com/terraform-linters/tflint/releases
+ARG TFLINT_VERSION=0.17.0
+
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -15,6 +21,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
+
+# Create a temp directory for downloads
+RUN mkdir -p /tmp/downloads
 
 # Configure apt and install packages
 RUN apt-get update \
@@ -61,6 +70,16 @@ RUN cd ~/azure-functions-core-tools \
     && ln -s ~/azure-functions-core-tools/func /usr/bin/func
 # Opt out of Func CLI telemetry gathering
 #ENV FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=true
+
+# Install Terraform, tflint, and graphviz
+RUN curl -sSL -o /tmp/downloads/terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+    && unzip /tmp/downloads/terraform.zip \
+    && mv terraform /usr/local/bin \
+    && curl -sSL -o /tmp/downloads/tflint.zip https://github.com/terraform-linters/tflint/releases/download/v${TFLINT_VERSION}/tflint_linux_amd64.zip \
+    && unzip /tmp/downloads/tflint.zip \
+    && mv tflint /usr/local/bin \
+    && cd ~ \ 
+    && apt-get install -y graphviz
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
