@@ -5,9 +5,7 @@
 ```bash
 
 # Use remote storage
-terraform init \
---backend-config ./backend-secrets.tfvars \
---backend-config "key=state.tfstate"
+terraform init --backend-config ./backend-secrets.tfvars
 
 ```
 
@@ -17,13 +15,12 @@ terraform init \
 
 # Run the plan to see the changes
 terraform plan \
--var 'name=cdw-azfuncdemo-20200825' \
+-var 'resource_name=cdw-azfuncdemo-20200825' \
 -var 'location=westus2'
-
 
 # Apply the script with the specified variable values
 terraform apply \
--var 'name=cdw-azfuncdemo-20200825' \
+-var 'resource_name=cdw-azfuncdemo-20200825' \
 -var 'location=westus2'
 
 ```
