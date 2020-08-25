@@ -12,7 +12,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/my-azure-function"
+        "cwd": "${workspaceFolder}/hello-world"
       }
     },
     {
@@ -31,7 +31,7 @@
       },
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/my-azure-function"
+        "cwd": "${workspaceFolder}/hello-world"
       }
     },
     {
@@ -47,7 +47,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/my-azure-function"
+        "cwd": "${workspaceFolder}/hello-world"
       }
     },
     {
@@ -64,14 +64,14 @@
       "dependsOn": "clean release",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/my-azure-function"
+        "cwd": "${workspaceFolder}/hello-world"
       }
     },
     {
       "type": "func",
       "dependsOn": "build",
       "options": {
-        "cwd": "${workspaceFolder}/my-azure-function/bin/Debug/netcoreapp3.0"
+        "cwd": "${workspaceFolder}/hello-world/bin/Debug/netcoreapp3.1"
       },
       "command": "host start",
       "isBackground": true,
