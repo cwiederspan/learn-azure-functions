@@ -38,8 +38,8 @@ resource "azurerm_app_service_plan" "plan" {
   name                = "${var.resource_name}-plan"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  kind                = "FunctionApp"
-
+  
+  kind             = "FunctionApp"
   is_xenon         = false
   per_site_scaling = false
   reserved         = false
@@ -49,8 +49,6 @@ resource "azurerm_app_service_plan" "plan" {
     size     = "EP1"
     capacity = 1
   }
-
-  tags { }
 }
 
 resource "azurerm_function_app" "app" {
