@@ -36,13 +36,15 @@ resource "azurerm_storage_account" "storage" {
 
 resource "azurerm_app_service_plan" "plan" {
   name                = "${var.resource_name}-plan"
-  location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
   
-  kind             = "elastic"
+  kind             = "linux"
   is_xenon         = false
   per_site_scaling = false
-  reserved         = false
+  reserved         = true
+
+  # maximum_elastic_worker_count = 5
 
   sku {
     tier     = "ElasticPremium"
@@ -50,7 +52,7 @@ resource "azurerm_app_service_plan" "plan" {
     capacity = 1
   }
 
-  tags = null
+  # tags = null
 }
 
 resource "azurerm_function_app" "app" {
@@ -60,4 +62,5 @@ resource "azurerm_function_app" "app" {
   app_service_plan_id        = azurerm_app_service_plan.plan.id
   storage_account_name       = azurerm_storage_account.storage.name
   storage_account_access_key = azurerm_storage_account.storage.primary_access_key
+  os_type                    = "linux"
 }

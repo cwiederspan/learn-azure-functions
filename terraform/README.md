@@ -9,7 +9,7 @@ terraform init --backend-config ./backend-secrets.tfvars
 
 ```
 
-## Execution
+## Terraform Plan and Apply
 
 ```bash
 
