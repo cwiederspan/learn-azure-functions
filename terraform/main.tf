@@ -158,6 +158,8 @@ resource "azurerm_function_app" "app" {
     WEBSITE_RUN_FROM_PACKAGE            = true
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = true
     WEBSITE_ENABLE_SYNC_UPDATE_SITE     = true
+
+    CosmosDBConnection = "${azurerm_cosmosdb_account.cosmos.connection_strings[0]}"
   }
 }
 
