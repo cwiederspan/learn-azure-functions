@@ -146,6 +146,15 @@ resource "azurerm_function_app" "app" {
   storage_account_name       = azurerm_storage_account.storage.name
   storage_account_access_key = azurerm_storage_account.storage.primary_access_key
   os_type                    = "linux"
+
+  app_settings = {
+    WEBSITE_CONTENTSHARE                     = "${var.resource_name}-app-00001"
+    WEBSITE_CONTENTAZUREFILECONNECTIONSTRING = "${azurerm_storage_account.storage.primary_connection_string}"
+
+    WEBSITE_RUN_FROM_PACKAGE            = true
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = true
+    WEBSITE_ENABLE_SYNC_UPDATE_SITE     = true
+  }
 }
 
 resource "azurerm_private_endpoint" "endpoint" {
