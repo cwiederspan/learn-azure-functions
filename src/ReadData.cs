@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 
 using Newtonsoft.Json;
 
-namespace Helloworld {
+namespace MyFunction {
 
     public static class ReadData {
 
