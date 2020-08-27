@@ -1,23 +1,38 @@
-# learn-azure-functions
-A hands-on approach to learning Azure Functions
+# Learn Azure Functions
 
-## References
+A hands-on approach to learning Azure Functions using technologies such as Devcontainer, Terraform and Azure DevOps Pipelines.
 
-https://github.com/Azure/azure-functions-core-tools
+## Prerequisites
 
+You will need the following apps and utilities installed to complete any tasks.
 
-## Create a new Function
+* [Docker Desktop](https://docs.docker.com/get-docker/)
 
-```bash
+* [Remote Development Extension Pack in VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
-func init my-azure-function --dotnet
+## Starting from Scratch
 
-cd my-azure-function
+```bashrc
+# Create an empty directory on your local computer
+mkdir MyAzFunctions
 
-func new --name HttpExample --template "HTTP trigger"
+# Open the empty folder in VS Code
+cd MyAzFunctions
 
-func start
+code .
 
-# Or, debug from the VS Code debug pane
+# At this point, you need to use the Remote Devcontainer option in VS Code to create
+# a devcontainer for the project.
+
+# COMING SOON: Demo/instructions to create devcontainer for dotnet 3.0
+
+# From the terminal window in VS Code
+mkdir FunctionApp
+
+cd FunctionApp
+
+func init
+
+func new -l c# -n MyFunction
 
 ```
