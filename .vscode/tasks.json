@@ -12,7 +12,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/hello-world"
+        "cwd": "${workspaceFolder}/src"
       }
     },
     {
@@ -31,7 +31,7 @@
       },
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/hello-world"
+        "cwd": "${workspaceFolder}/src"
       }
     },
     {
@@ -47,7 +47,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/hello-world"
+        "cwd": "${workspaceFolder}/src"
       }
     },
     {
@@ -64,14 +64,14 @@
       "dependsOn": "clean release",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/hello-world"
+        "cwd": "${workspaceFolder}/src"
       }
     },
     {
       "type": "func",
       "dependsOn": "build",
       "options": {
-        "cwd": "${workspaceFolder}/hello-world/bin/Debug/netcoreapp3.1"
+        "cwd": "${workspaceFolder}/src/bin/Debug/netcoreapp3.1"
       },
       "command": "host start",
       "isBackground": true,
